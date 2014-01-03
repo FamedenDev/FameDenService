@@ -13,7 +13,7 @@
 		<repository>
 			<id>in-project</id>
 			<name>In Project Repo</name>
-			<url>file://${project.basedir}/ExternalLibraries</url>
+			<url>file://${basedir}/libs</url>
 		</repository>
 	</repositories>
 
