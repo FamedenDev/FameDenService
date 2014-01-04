@@ -104,6 +104,13 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2</version>
 		</dependency>
+
+		<!-- Hibernate annotation -->
+		<dependency>
+			<groupId>hibernate-annotations</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.3.0.GA</version>
+		</dependency>
 		<!-- Hibernate library dependecy end -->
 
 		<dependency>
@@ -167,7 +174,7 @@
 							</resources>
 						</configuration>
 					</execution>
-					
+
 					<execution>
 						<id>copy-encryptionKeys</id>
 						<phase>compile</phase>
@@ -184,8 +191,8 @@
 							</resources>
 						</configuration>
 					</execution>
-					
-					
+
+
 					<execution>
 						<id>copy-famedenDocs</id>
 						<phase>compile</phase>
@@ -202,8 +209,8 @@
 							</resources>
 						</configuration>
 					</execution>
-					
-					
+
+
 					<execution>
 						<id>copy-configFiles</id>
 						<phase>compile</phase>
@@ -220,8 +227,8 @@
 							</resources>
 						</configuration>
 					</execution>
-					
-					
+
+
 				</executions>
 			</plugin>
 		</plugins>
