@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fameden.bean.request.FamedenRequestBean;
 import com.fameden.bean.user.FamedenUserBean;
 import com.fameden.bean.user.FamedenUserIdsMapBean;
 import com.fameden.bean.user.FamedenUserInfoBean;
@@ -85,6 +86,9 @@ public class RegistrationDAO {
 			famedenUser.setIsVerified(CommonConstants.INACTIVE);
 			famedenUser.setCreationDate(new Date(Calendar.getInstance()
 					.getTimeInMillis()));
+			FamedenRequestBean request = new FamedenRequestBean();
+			request.setRequestID(dto.getRequestId());
+			famedenUser.setFamedenRequestBean(request);
 			famedenUser.setEmailAddress(dto.getUserEmailAddress());
 
 		}

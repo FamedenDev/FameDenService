@@ -3,12 +3,17 @@ package com.fameden.bean.user;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fameden.bean.request.FamedenRequestBean;
 
 @Entity
 @Table(name = "FAMEDEN_USERS")
@@ -28,6 +33,9 @@ public class FamedenUserBean implements Serializable {
 	private Date creationDate;
 	private String isVerified;
 	private String active;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "requestID")
+	private FamedenRequestBean famedenRequestBean;
 
 	public int getFamdenExternalUserId() {
 		return famdenExternalUserId;
@@ -83,6 +91,14 @@ public class FamedenUserBean implements Serializable {
 
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+	
+	public FamedenRequestBean getFamedenRequestBean() {
+		return famedenRequestBean;
+	}
+
+	public void setFamedenRequestBean(FamedenRequestBean famedenRequestBean) {
+		this.famedenRequestBean = famedenRequestBean;
 	}
 
 }
