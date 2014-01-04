@@ -26,6 +26,7 @@ import com.sun.net.ssl.internal.ssl.Provider;
  * 
  * @author Rav
  */
+@SuppressWarnings("restriction")
 public class SendHTMLMail implements Runnable {
 
 	private String SMTP_HOST_NAME;

@@ -13,7 +13,6 @@ import com.fameden.bean.user.FamedenUserInfoBean;
 import com.fameden.bean.user.FamedenUserKeysBean;
 import com.fameden.bean.user.FamedenUserMappingCompositePK;
 import com.fameden.common.constants.CommonConstants;
-import com.fameden.common.dao.CommonOperationsDAO;
 import com.fameden.common.dao.DatabaseConfig;
 import com.fameden.common.exception.BreachingSingletonException;
 import com.fameden.useroperations.registration.dto.RegistrationDTO;
@@ -23,8 +22,6 @@ public class RegistrationDAO {
 	Logger logger = LoggerFactory.getLogger(RegistrationDAO.class);
 
 	private static RegistrationDAO SINGLETON;
-
-	private CommonOperationsDAO commonDAO = null;
 
 	public static RegistrationDAO getInstance()
 			throws BreachingSingletonException {
@@ -92,9 +89,6 @@ public class RegistrationDAO {
 			famedenUser.setIsVerified(CommonConstants.INACTIVE);
 			famedenUser.setCreationDate(new Date(Calendar.getInstance()
 					.getTimeInMillis()));
-			commonDAO = CommonOperationsDAO.getInstance();
-			famedenUser.setFamedenRequestBean(commonDAO.getRequest(
-					dto.getRequestId()).getFamedenRequestBean());
 			famedenUser.setEmailAddress(dto.getUserEmailAddress());
 
 		}

@@ -24,6 +24,7 @@ import sun.misc.BASE64Encoder;
 import com.fameden.common.exception.BreachingSingletonException;
 import com.fameden.housekeeping.constants.HouseKeepingConstants;
 
+@SuppressWarnings("restriction")
 public class RSAAlgorithmImpl {
 
 	private static Logger logger = LoggerFactory
