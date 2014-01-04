@@ -63,9 +63,8 @@ public class CommonOperationsDAO implements Serializable {
 		return requestId;
 	}
 
-	public boolean updateRequestStatus(int requestId, String status)
+	public void updateRequestStatus(int requestId, String status)
 			throws Exception {
-		boolean result = false;
 		if (requestId > 0) {
 			try {
 				Session session = DatabaseConfig.getSessionFactory()
@@ -85,10 +84,7 @@ public class CommonOperationsDAO implements Serializable {
 				logger.error(e.getMessage(), e);
 				throw e;
 			}
-		} else {
-			result = true;
-		}
-		return result;
+		} 
 	}
 
 	@SuppressWarnings("unchecked")

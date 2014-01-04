@@ -142,18 +142,14 @@ public class RegistrationService implements ICommonService {
 							.decryptText(dto.getUserPassword())));
 
 					RegistrationDAO dao = RegistrationDAO.getInstance();
-					boolean result = dao.registerUser(dto);
-					if (result) {
-						response = new FameDenRegistrationResponse();
-						response.setRequestStatus(CommonConstants.SUCCESS);
+					dao.registerUser(dto);
 
-						sendMailNotification(dto.getUserEmailAddress(),
-								dto.getRequestId(), dto.getUserFullName());
+					response = new FameDenRegistrationResponse();
+					response.setRequestStatus(CommonConstants.SUCCESS);
 
-					} else {
-						throw new FamedenSystemException(
-								CommonConstants.GENERIC_EXCEPTION);
-					}
+					sendMailNotification(dto.getUserEmailAddress(),
+							dto.getRequestId(), dto.getUserFullName());
+
 				} else {
 					throw new FamedenSystemException(
 							CommonConstants.REQUEST_NOT_GENERATED);

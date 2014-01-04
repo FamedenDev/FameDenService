@@ -136,7 +136,8 @@ public class FameDenForgotCredentialService implements ICommonService {
 					FamedenCodeVerificationBean verificationBean = dao
 							.getVerificationCodeDetails(
 									((UpdatePasswordDTO) dto)
-											.getUserEmailAddress(), null,
+											.getUserEmailAddress(),
+									null,
 									((UpdatePasswordDTO) dto)
 											.getVerificationCode(),
 									ForgotCredentialConstants.FORGOT_PASSWORD_REQUEST_TYPE);
@@ -174,16 +175,15 @@ public class FameDenForgotCredentialService implements ICommonService {
 								.randomString(CommonConstants.CODE_LENGTH);
 						((ForgotCredentialDTO) dto)
 								.setVerificationCode(randomCode);
-						boolean result = dao
-								.insertVerificationCode((ForgotCredentialDTO) dto);
-						if (result) {
-							response.setRequestStatus(CommonConstants.SUCCESS);
+						dao.insertVerificationCode((ForgotCredentialDTO) dto);
 
-							sendForgotPasswordMailNotification(
-									((ForgotCredentialDTO) dto)
-											.getUserEmailAddress(),
-									user.getFullName(), randomCode);
-						}
+						response.setRequestStatus(CommonConstants.SUCCESS);
+
+						sendForgotPasswordMailNotification(
+								((ForgotCredentialDTO) dto)
+										.getUserEmailAddress(),
+								user.getFullName(), randomCode);
+
 					} else {
 						throw new ForgotCredentialException(
 								CommonConstants.USER_DO_NOT_EXIST);

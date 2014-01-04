@@ -38,8 +38,7 @@ public class RegistrationDAO {
 		}
 	}
 
-	public boolean registerUser(RegistrationDTO dto) throws Exception {
-		boolean result = false;
+	public void registerUser(RegistrationDTO dto) throws Exception {
 		Session session = null;
 		FamedenUserInfoBean famdenUserInfo = null;
 		try {
@@ -68,7 +67,6 @@ public class RegistrationDAO {
 			session.save(famedenUserIdsMap);
 
 			session.getTransaction().commit();
-			result = true;
 		} catch (Exception e) {
 			if (session != null) {
 				session.getTransaction().rollback();
@@ -76,8 +74,6 @@ public class RegistrationDAO {
 			logger.error(e.getMessage(), e);
 			throw e;
 		}
-
-		return result;
 	}
 
 	public FamedenUserBean populateFamedenUser(RegistrationDTO dto)

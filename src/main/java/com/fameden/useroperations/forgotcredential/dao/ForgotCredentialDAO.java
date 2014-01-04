@@ -47,9 +47,8 @@ public class ForgotCredentialDAO implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean insertVerificationCode(ForgotCredentialDTO dto)
+	public void insertVerificationCode(ForgotCredentialDTO dto)
 			throws Exception {
-		boolean result = false;
 		Session session = null;
 		try {
 			if (dto.getRequestType().equals(
@@ -98,7 +97,6 @@ public class ForgotCredentialDAO implements Serializable {
 				}
 
 				session.getTransaction().commit();
-				result = true;
 			} else {
 				throw new ForgotCredentialException(
 						CommonConstants.UNSUPPORTED_REQUEST_TYPE);
@@ -112,8 +110,6 @@ public class ForgotCredentialDAO implements Serializable {
 			logger.error(e.getMessage(), e);
 			throw e;
 		}
-
-		return result;
 	}
 
 	@SuppressWarnings("unchecked")
