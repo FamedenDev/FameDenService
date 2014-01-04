@@ -32,7 +32,6 @@ public class SendHTMLMail implements Runnable {
 	private String SMTP_PORT;
 	private String debug;
 	private String auth;
-	private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 	private String MsgTxt = null;
 	private String Subject = null;
 	private String From = null;
@@ -67,8 +66,8 @@ public class SendHTMLMail implements Runnable {
 
 	public SendHTMLMail(String from, String password, String sub, String msg,
 			String[] attachments, String[] to) {
-		this.SMTP_HOST_NAME = "smtp.gmail.com";
-		this.SMTP_PORT = "465";
+		this.SMTP_HOST_NAME = CommonConstants.GMAIL_SMTP_HOST_NAME;
+		this.SMTP_PORT = CommonConstants.GMAIL_SMTP_PORT;
 		this.debug = "true";
 		this.auth = "true";
 		this.MsgTxt = msg;
@@ -85,8 +84,8 @@ public class SendHTMLMail implements Runnable {
 
 	public SendHTMLMail(String sub, String msg, String[] attachments,
 			String[] to) {
-		this.SMTP_HOST_NAME = "smtp.gmail.com";
-		this.SMTP_PORT = "465";
+		this.SMTP_HOST_NAME = CommonConstants.GMAIL_SMTP_HOST_NAME;
+		this.SMTP_PORT = CommonConstants.GMAIL_SMTP_PORT;
 		this.debug = "true";
 		this.auth = "true";
 		this.MsgTxt = msg;
@@ -112,7 +111,7 @@ public class SendHTMLMail implements Runnable {
 		props.put("mail.debug", this.debug);
 		props.put("mail.smtp.port", SMTP_PORT);
 		props.put("mail.smtp.socketFactory.port", SMTP_PORT);
-		props.put("mail.smtp.socketFactory.class", SSL_FACTORY);
+		props.put("mail.smtp.socketFactory.class", CommonConstants.SSL_FACTORY);
 		props.put("mail.smtp.socketFactory.fallback", "false");
 		final String from1 = from;
 		final String pwd1 = pwd;

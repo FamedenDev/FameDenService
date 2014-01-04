@@ -3,8 +3,10 @@ package com.fameden.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.fameden.common.constants.CommonConstants;
+
 /**
- *
+ * 
  * @author Ravjot
  */
 public class CommonValidations {
@@ -21,16 +23,12 @@ public class CommonValidations {
 		boolean result = false;
 
 		if (!isStringEmpty(emailAddress)) {
-			String EMAIL_PATTERN =
-					"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-							+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-			Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+			Pattern pattern = Pattern.compile(CommonConstants.EMAIL_PATTERN);
 			Matcher matcher = pattern.matcher(emailAddress);
-			result =  matcher.matches();
+			result = matcher.matches();
 		}
 
 		return result;
 	}
 }
-

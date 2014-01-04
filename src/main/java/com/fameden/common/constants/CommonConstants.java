@@ -39,4 +39,20 @@ public final class CommonConstants {
 
 	public static final String UNSUPPORTED_REQUEST_TYPE = "OOPs!!! We dont support this request type right now.";
 
+	public static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+	public static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
+	public static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+	
+	public static final String GMAIL_SMTP_HOST_NAME = "smtp.gmail.com";
+	public static final String CLOUD_BEES_SMPT_NAME = "smtp.sendgrid.net";
+	public static final String GMAIL_SMTP_PORT = "465";
+	public static final String CLOUD_BEES_SMTP_PORT = "587";
+	public static final String FAMEDEN_INFO_GMAIL_USER_NAME = "fameden.info@gmail.com";
+	public static final String FAMEDEN_INFO_GMAIL_PASSWORD = "apple$3401";
+	public static final String FAMEDEN_INFO_CLOUD_BEES_USER_NAME = "fameden.info";
+	public static final String FAMEDEN_INFO_CLOUD_BEES_PASSWORD = "5famedendevelopers";
+
 }
