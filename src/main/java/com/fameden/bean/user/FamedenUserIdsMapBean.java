@@ -6,9 +6,16 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/*
+ * This hibernate bean is responsible of storing the mapping of
+ * external and internal user id.
+ * This table is the only place where we can get the mapping of external and internal 
+ * user ids.
+ */
+
 @Entity
 @Table(name = "FAMEDEN_USER_MAPPING")
-public class FamedenUserIdsMapBean implements Serializable{
+public class FamedenUserIdsMapBean implements Serializable {
 
 	/**
 	 * 

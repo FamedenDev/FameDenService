@@ -15,6 +15,17 @@ import javax.persistence.Table;
 
 import com.fameden.bean.request.FamedenRequestBean;
 
+/*
+ * This hibernate bean represents the table that will store the user details.
+ * The data that will be stored will be very high level information related to
+ * the user. 
+ * This table contains info like primary emailAddress of the user, user's mobile no.,
+ * whether the user is verified and active, when the user account was created or updated.
+ * It also links the request Id to get the information of the location where the user requested
+ * from and also request Id is used as email verification code to verify user's emailaddress.
+ * 
+ */
+
 @Entity
 @Table(name = "FAMEDEN_USERS")
 public class FamedenUserBean implements Serializable {
@@ -92,7 +103,7 @@ public class FamedenUserBean implements Serializable {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	
+
 	public FamedenRequestBean getFamedenRequestBean() {
 		return famedenRequestBean;
 	}

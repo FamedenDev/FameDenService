@@ -13,6 +13,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/*
+ * This hibernate bean is responsible of storing the user detailed information.
+ * This is a child table of fameden user table.
+ * This table will store details like alternative email Id, user's full Name,
+ * user's interests etc.
+ */
+
 @Entity
 @Table(name = "FAMEDEN_USER_INFO")
 public class FamedenUserInfoBean implements Serializable {

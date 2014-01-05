@@ -10,6 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/*
+ * This hibernate bean is responsible for logging all type of request
+ * that will be requested to the fameden webservice via any client.
+ * This will help to track and to generate reports for future references.
+ * The columns are requestId,requestType,Status, external user id, requesting date,
+ * and ip address.
+*/
+
 @Entity
 @Table(name = "FAMEDEN_REQUEST")
 public class FamedenRequestBean implements Serializable {

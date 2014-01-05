@@ -12,6 +12,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/*
+ * This hibernate bean is responsible for storing extra details related to
+ * the request stored in the fameden request table.
+ * This includes itemName,itemId, cost, paymentMode etc.
+ * This will give further details of the request.
+ */
 @Entity
 @Table(name = "FAMEDEN_REQUEST_DETAIL")
 public class FamedenRequestDetailBean implements Serializable {
