@@ -33,7 +33,7 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<mapping class="com.fameden.bean.request.FamedenRequestBean" />
 		<mapping class="com.fameden.bean.request.FamedenRequestDetailBean" />
 		<mapping class="com.fameden.bean.user.FamedenUserBean" />
@@ -41,6 +41,8 @@
 		<mapping class="com.fameden.bean.user.FamedenUserInfoBean" />
 		<mapping class="com.fameden.bean.user.FamedenUserKeysBean" />
 		<mapping class="com.fameden.bean.codeverification.FamedenCodeVerificationBean" />
+		<mapping class="com.fameden.bean.metadata.galleryarea.FameDenDinnerWithCelebRequest" />
+		<mapping class="com.fameden.bean.metadata.galleryarea.FamedenCelebrityBean" />
 	</session-factory>
 </hibernate-configuration>
 
