@@ -1,6 +1,7 @@
 package com.fameden.bean.user;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,6 +39,8 @@ public class FamedenUserInfoBean implements Serializable {
 	private String fullName;
 	private String alternateEmailAddress;
 	private String userInterests;
+	private Date dob;
+	private String profileImageURL;
 
 	public int getFamedenUserInfoId() {
 		return famedenUserInfoId;
@@ -77,6 +80,22 @@ public class FamedenUserInfoBean implements Serializable {
 
 	public void setUserInterests(String userInterests) {
 		this.userInterests = userInterests;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getProfileImageURL() {
+		return profileImageURL;
+	}
+
+	public void setProfileImageURL(String profileImageURL) {
+		this.profileImageURL = profileImageURL;
 	}
 
 }
