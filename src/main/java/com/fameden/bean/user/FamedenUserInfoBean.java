@@ -48,7 +48,7 @@ public class FamedenUserInfoBean implements Serializable {
 	private FamdenUserMeter famdenUserMeter;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="FamedenUserAddress")
 	@JoinColumn(name = "famedenUserAddressId")
-	private List<FamedenUserAddress> addressList;
+	private List<FamedenUserAddressBean> addressList;
 
 	public int getFamedenUserInfoId() {
 		return famedenUserInfoId;
@@ -123,11 +123,11 @@ public class FamedenUserInfoBean implements Serializable {
 		this.famdenUserMeter = famdenUserMeter;
 	}
 
-	public List<FamedenUserAddress> getAddressList() {
+	public List<FamedenUserAddressBean> getAddressList() {
 		return addressList;
 	}
 
-	public void setAddressList(List<FamedenUserAddress> addressList) {
+	public void setAddressList(List<FamedenUserAddressBean> addressList) {
 		this.addressList = addressList;
 	}
 

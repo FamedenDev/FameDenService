@@ -10,9 +10,10 @@ import com.fameden.common.model.CommonResponseAttributes;
 import com.fameden.useroperations.forgotcredential.model.FameDenForgotEmailRequest;
 import com.fameden.useroperations.forgotcredential.model.UpdatePasswordRequest;
 import com.fameden.useroperations.login.model.FameDenLoginRequest;
-import com.fameden.useroperations.login.model.FameDenLoginResponse;
 import com.fameden.useroperations.registration.model.FameDenRegistrationRequest;
 import com.fameden.useroperations.registration.model.FameDenRegistrationResponse;
+import com.fameden.useroperations.viewprofile.model.FameDenViewProfileRequest;
+import com.fameden.useroperations.viewprofile.model.FameDenViewProfileResponse;
 
 @WebService(name = "UserOperationsService")
 public interface IUserOperationsWS {
@@ -25,8 +26,14 @@ public interface IUserOperationsWS {
 
 	@WebMethod(operationName = "LoginUser")
 	@WebResult(name = "LoginResponse")
-	public FameDenLoginResponse loginUser(
+	public FameDenViewProfileResponse loginUser(
 			@WebParam(name = "LoginRequest") FameDenLoginRequest request)
+			throws Exception;
+	
+	@WebMethod(operationName = "ViewProfile")
+	@WebResult(name = "ProfileDetails")
+	public FameDenViewProfileResponse viewProfile(
+			@WebParam(name = "ViewProfileRequest") FameDenViewProfileRequest request)
 			throws Exception;
 
 	@WebMethod(operationName = "ForgotPassword")

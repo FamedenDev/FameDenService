@@ -15,7 +15,8 @@ import com.fameden.useroperations.login.constants.LoginConstatns;
 import com.fameden.useroperations.login.dao.LoginDAO;
 import com.fameden.useroperations.login.dto.LoginDTO;
 import com.fameden.useroperations.login.exception.LoginValidationException;
-import com.fameden.useroperations.login.model.FameDenLoginResponse;
+import com.fameden.useroperations.viewprofile.model.FameDenViewProfileResponse;
+import com.fameden.useroperations.viewprofile.service.ViewProfileService;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.encryptdecrypt.RSAAlgorithmImpl;
 
@@ -67,7 +68,7 @@ public class LoginService implements ICommonService {
 
 	@Override
 	public Object processRequest(Object dto) {
-		FameDenLoginResponse response = new FameDenLoginResponse();
+		FameDenViewProfileResponse response = new FameDenViewProfileResponse();
 		CommonOperationsDAO commonDao = null;
 		int requestId = 0;
 		try {
@@ -91,15 +92,22 @@ public class LoginService implements ICommonService {
 					FamedenUserInfoBean userInfo = loginDao
 							.authenticateUser((LoginDTO) dto);
 
-					response.setErrorCode(null);
-					response.setErrorMessage(null);
-					response.setRequestStatus(CommonConstants.SUCCESS);
-					response.setUserAlternativeEmailAddress(userInfo
-							.getAlternateEmailAddress());
-					response.setUserEmailAddress(userInfo.getFamedenUserBean()
-							.getEmailAddress());
-					response.setUserFullName(userInfo.getFullName());
-					response.setUserInterests(userInfo.getUserInterests());
+					/*
+					 * response.setErrorCode(null);
+					 * response.setErrorMessage(null);
+					 * response.setRequestStatus(CommonConstants.SUCCESS);
+					 * response.setUserAlternativeEmailAddress(userInfo
+					 * .getAlternateEmailAddress());
+					 * response.setUserEmailAddress
+					 * (userInfo.getFamedenUserBean() .getEmailAddress());
+					 * response.setUserFullName(userInfo.getFullName());
+					 * response.setUserInterests(userInfo.getUserInterests());
+					 */
+
+					response = ViewProfileService.getInstance()
+							.getProfileInformation(
+									userInfo.getFamedenUserBean()
+											.getFamdenExternalUserId());
 				} else
 					throw new LoginValidationException(
 							CommonConstants.USER_DO_NOT_EXIST);

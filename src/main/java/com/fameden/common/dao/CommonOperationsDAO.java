@@ -153,6 +153,42 @@ public class CommonOperationsDAO implements Serializable {
 		}
 		return user;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public FamedenUserBean searchByExternalUserId(int externalUserId) throws Exception {
+		FamedenUserBean user = null;
+		try {
+			Session session = DatabaseConfig.getSessionFactory().openSession();
+
+			session.beginTransaction();
+
+			Criteria crit = session.createCriteria(FamedenUserBean.class);
+			Criterion emailAddressRestriction = Restrictions.eq("famdenExternalUserId",
+					externalUserId);
+
+			Criterion activeRestriction = Restrictions.eq("active",
+					CommonConstants.ACTIVE);
+
+			LogicalExpression andExp = Restrictions.and(
+					emailAddressRestriction, activeRestriction);
+			crit.add(andExp);
+
+			List<FamedenUserBean> famedenUserList = ((List<FamedenUserBean>) crit
+					.list());
+
+			if (famedenUserList != null && famedenUserList.size() > 0) {
+				user = famedenUserList.get(0);
+			}else{
+				throw new Exception(CommonConstants.USER_DO_NOT_EXIST);
+			}
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw e;
+		}
+		return user;
+	}
 
 	@SuppressWarnings("unchecked")
 	public FamedenUserBean searchByEmailIdAndMobileNumber(String emailId,

@@ -24,6 +24,8 @@ import com.fameden.useroperations.registration.dto.RegistrationDTO;
 import com.fameden.useroperations.registration.model.FameDenRegistrationRequest;
 import com.fameden.useroperations.registration.model.FameDenRegistrationResponse;
 import com.fameden.useroperations.registration.service.RegistrationService;
+import com.fameden.useroperations.viewprofile.model.FameDenViewProfileRequest;
+import com.fameden.useroperations.viewprofile.model.FameDenViewProfileResponse;
 import com.fameden.webservice.CommonOperations;
 import com.fameden.webservice.contracts.useroperations.IUserOperationsWS;
 
@@ -138,15 +140,15 @@ public class UserOperationsWS extends CommonOperations implements
 	}
 
 	@Override
-	public FameDenLoginResponse loginUser(FameDenLoginRequest request)
+	public FameDenViewProfileResponse loginUser(FameDenLoginRequest request)
 			throws Exception {
-		FameDenLoginResponse response = null;
+		FameDenViewProfileResponse response = null;
 
 		if (request != null) {
 			try {
 				service = LoginService.getInstance();
 
-				response = (FameDenLoginResponse) service
+				response = (FameDenViewProfileResponse) service
 						.processRequest(convertWSRequestToDTO(request,
 								request.getRequestType()));
 				if (response == null) {
@@ -154,12 +156,12 @@ public class UserOperationsWS extends CommonOperations implements
 				}
 
 			} catch (Exception e) {
-				response = new FameDenLoginResponse();
+				response = new FameDenViewProfileResponse();
 				response.setErrorCode("500");
 				response.setRequestStatus(CommonConstants.FAILURE);
 			}
 		} else {
-			response = new FameDenLoginResponse();
+			response = new FameDenViewProfileResponse();
 			response.setErrorCode("100");
 			response.setRequestStatus(CommonConstants.FAILURE);
 		}
@@ -227,6 +229,13 @@ public class UserOperationsWS extends CommonOperations implements
 			response.setRequestStatus(CommonConstants.FAILURE);
 		}
 		return response;
+	}
+
+	@Override
+	public FameDenViewProfileResponse viewProfile(
+			FameDenViewProfileRequest request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

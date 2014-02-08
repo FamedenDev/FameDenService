@@ -1,25 +1,7 @@
-package com.fameden.bean.user;
+package com.fameden.useroperations.viewprofile.model;
 
-import java.io.Serializable;
+public class FameDenUserAddress {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "FAMEDEN_USER_ADDRESS")
-public class FamedenUserAddress implements Serializable{
-	
-	private static final long serialVersionUID = -3455978118944864112L;
-	@Id
-	@GeneratedValue(generator = "famedenUserInfoId_seq", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(allocationSize = 1, initialValue = 1, sequenceName = "famedenUserInfoId_seq", name = "famedenUserInfoId_seq")
-	@Column(name = "fameden_User_Address_Id")
-	private int famedenUserAddressId;
 	private String addressType;
 	private String addressLine1;
 	private String addressLine2;
@@ -91,14 +73,6 @@ public class FamedenUserAddress implements Serializable{
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public int getFamedenUserAddressId() {
-		return famedenUserAddressId;
-	}
-
-	public void setFamedenUserAddressId(int famedenUserAddressId) {
-		this.famedenUserAddressId = famedenUserAddressId;
 	}
 
 }
