@@ -40,6 +40,9 @@
 		<mapping class="com.fameden.bean.user.FamedenUserIdsMapBean" />
 		<mapping class="com.fameden.bean.user.FamedenUserInfoBean" />
 		<mapping class="com.fameden.bean.user.FamedenUserKeysBean" />
+		<mapping class="com.fameden.bean.user.FamdenUserSocialNetworkDetail" />
+		<mapping class="com.fameden.bean.user.FamdenUserMeter" />
+		<mapping class="com.fameden.bean.user.FamedenUserAddress"/>
 		<mapping class="com.fameden.bean.codeverification.FamedenCodeVerificationBean" />
 	</session-factory>
 </hibernate-configuration>
