@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "FAMEDEN_USER_ADDRESS")
-public class FamedenUserAddressBean implements Serializable{
-	
+public class FamedenUserAddressBean implements Serializable {
+
 	private static final long serialVersionUID = -3455978118944864112L;
 	@Id
 	@GeneratedValue(generator = "famedenUserInfoId_seq", strategy = GenerationType.SEQUENCE)
@@ -28,6 +30,11 @@ public class FamedenUserAddressBean implements Serializable{
 	private String country;
 	private String pinCode;
 	private String contactNumber;
+	@ManyToOne
+    @JoinColumn(name="famden_user_info_id", 
+            insertable=false, updatable=false, 
+            nullable=false)
+	private FamedenUserInfoBean famedenUserInfoBean;
 
 	public String getAddressType() {
 		return addressType;
@@ -99,6 +106,14 @@ public class FamedenUserAddressBean implements Serializable{
 
 	public void setFamedenUserAddressId(int famedenUserAddressId) {
 		this.famedenUserAddressId = famedenUserAddressId;
+	}
+
+	public FamedenUserInfoBean getFamedenUserInfoBean() {
+		return famedenUserInfoBean;
+	}
+
+	public void setFamedenUserInfoBean(FamedenUserInfoBean famedenUserInfoBean) {
+		this.famedenUserInfoBean = famedenUserInfoBean;
 	}
 
 }
