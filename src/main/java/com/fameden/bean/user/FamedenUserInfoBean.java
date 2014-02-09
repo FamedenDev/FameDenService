@@ -17,8 +17,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
-
 /*
  * This hibernate bean is responsible of storing the user detailed information.
  * This is a child table of fameden user table.
