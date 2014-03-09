@@ -32,7 +32,7 @@ public class ViewProfileService implements ICommonService {
 	private static ViewProfileService SINGLETON;
 
 	private Logger logger = LoggerFactory.getLogger(ViewProfileService.class);
-	CommonOperationsDAO commonDao;
+	private CommonOperationsDAO commonDao;
 
 	public static ViewProfileService getInstance()
 			throws BreachingSingletonException {
@@ -54,19 +54,19 @@ public class ViewProfileService implements ICommonService {
 		ViewProfileDTO dto = (ViewProfileDTO) object;
 		boolean result = false;
 		FamedenUserBean user = null;
-		try {
-			user = commonDao.searchByExternalUserId(Integer
-					.parseInt(RSAAlgorithmImpl.getInstance().decryptText(
-							dto.getRequestingUserId())));
-		} catch (Exception e) {
-			throw new ViewProfileException(
-					ViewProfileConstants.REQUESTING_USER_DOES_NOT_EXIST);
-		}
+
 		if (CommonValidations.isStringEmpty(dto.getRequestType())
-				&& CommonValidations.isStringEmpty(dto.getRequestingUserId())
+				&& dto.getExternalUserId() > 0
 				&& CommonValidations.isStringEmpty(dto.getViewProfileUserId())
 				&& dto.getRequestType().equals(
 						ViewProfileConstants.REQUEST_TYPE)) {
+			try {
+				user = commonDao
+						.searchByExternalUserId(dto.getExternalUserId());
+			} catch (Exception e) {
+				throw new ViewProfileException(
+						ViewProfileConstants.REQUESTING_USER_DOES_NOT_EXIST);
+			}
 			if (user != null) {
 				try {
 					user = commonDao.searchByExternalUserId(Integer

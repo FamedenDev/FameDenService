@@ -7,6 +7,7 @@ import javax.jws.WebService;
 
 import com.fameden.common.model.CommonRequestAttributes;
 import com.fameden.common.model.CommonResponseAttributes;
+import com.fameden.useroperations.editprofile.model.EditProfileRequest;
 import com.fameden.useroperations.forgotcredential.model.FameDenForgotEmailRequest;
 import com.fameden.useroperations.forgotcredential.model.UpdatePasswordRequest;
 import com.fameden.useroperations.login.model.FameDenLoginRequest;
@@ -34,6 +35,12 @@ public interface IUserOperationsWS {
 	@WebResult(name = "ProfileDetails")
 	public FameDenViewProfileResponse viewProfile(
 			@WebParam(name = "ViewProfileRequest") FameDenViewProfileRequest request)
+			throws Exception;
+	
+	@WebMethod(operationName = "EditProfile")
+	@WebResult(name = "EditProfileResponse")
+	public CommonResponseAttributes editProfile(
+			@WebParam(name = "EditProfileRequest") EditProfileRequest request)
 			throws Exception;
 
 	@WebMethod(operationName = "ForgotPassword")
